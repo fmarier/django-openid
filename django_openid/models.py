@@ -99,7 +99,7 @@ class DjangoOpenIDStore(OpenIDStore):
     
     def cleanupNonces(self):
         Nonce.objects.filter(
-            timestamp__lt = (int(time.time()) - nonce.SKEW)
+            timestamp__lt = (int(time.time()) - openid.store.nonce.SKEW)
         ).delete()
     
     def cleanupAssociations(self):
